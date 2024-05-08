@@ -1,0 +1,9 @@
+-ver lista de tareas
+
+-filtrar tareas
+
+-agregar tarea nueva
+
+-editar tarea 
+
+-eliminar tarea

@@ -1,0 +1,14 @@
+Tablas:
+
+Tareas:
+-idTarea
+-nombre
+-descripcion
+-idCategoria
+-completada
+-fechaInicio
+-fechaVence
+
+Categorias:
+-idCategoria
+-nombre

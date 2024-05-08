@@ -1,0 +1,7 @@
+
+agregar funcionalidades:
+
+-editar tarea ( falta terminar lo de editar categoria)
+-agregar tarea
+-terminar tarea
+-eliminar tarea

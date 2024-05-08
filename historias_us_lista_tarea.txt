@@ -1,0 +1,41 @@
+1. Como usuario, quiero poder agregar una nueva tarea a mi lista, para recordar las actividades pendientes.
+Criterios de Aceptación:
+Debe haber un formulario donde el usuario pueda ingresar el nombre de la tarea.
+Las tareas agregadas deben mostrarse en una lista visible.
+2. Como usuario, quiero poder marcar una tarea como completada, para mantener un registro de mis progresos.
+Criterios de Aceptación:
+Debe haber una opción para marcar una tarea como completada.
+Las tareas completadas deben diferenciarse visualmente de las pendientes.
+3. Como usuario, quiero poder eliminar una tarea de la lista, para mantener mi lista organizada.
+Criterios de Aceptación:
+Debe existir una opción para eliminar una tarea seleccionada.
+Se debe mostrar una confirmación antes de eliminar la tarea.
+4. Como usuario, quiero poder filtrar las tareas por categorías (por ejemplo, trabajo, personal, estudios), para organizar mejor mis actividades.
+Criterios de Aceptación:
+Debe haber una opción para aplicar filtros por categoría.
+Las tareas deben mostrarse según la categoría seleccionada.
+5. Como usuario, quiero poder establecer fechas de vencimiento para las tareas, para priorizar mis actividades.
+Criterios de Aceptación:
+Debe ser posible agregar una fecha de vencimiento opcional para cada tarea.
+Las tareas con fechas de vencimiento próximas deben destacarse visualmente.
+
+6. Como usuario, quiero poder ver detalles completos de una tarea, incluyendo su descripción, categoría, fecha de inicio y fecha de vencimiento, para obtener información detallada sobre mis actividades.
+Criterios de Aceptación:
+Debe haber una opción para seleccionar una tarea y ver todos sus detalles.
+Los detalles mostrados deben incluir nombre, descripción, categoría, fecha de inicio y fecha de vencimiento.
+7. Como usuario, quiero poder editar una tarea existente para actualizar su nombre, descripción, categoría, fechas u otros detalles, para mantener la información actualizada.
+Criterios de Aceptación:
+Debe existir una opción para editar los detalles de una tarea seleccionada.
+Se deben guardar los cambios realizados y actualizar la tarea en la lista.
+8. Como usuario, quiero poder marcar una tarea como no completada si la considero pendiente nuevamente, para gestionar mejor mi lista de tareas.
+Criterios de Aceptación:
+Debe haber una opción para cambiar el estado de una tarea completada a no completada.
+La tarea modificada debe volver a la lista de tareas pendientes.
+9. Como usuario, quiero poder filtrar las tareas por estado (completadas / no completadas) para visualizar rápidamente las tareas activas.
+Criterios de Aceptación:
+Debe haber una opción para aplicar filtros por estado de la tarea.
+Las tareas deben mostrarse según el estado seleccionado (completadas / no completadas).
+10. Como usuario, quiero poder agregar categorías personalizadas para organizar mejor mis tareas, para adaptar la lista a mis necesidades específicas.
+Criterios de Aceptación:
+Debe haber una opción para agregar nuevas categorías desde la aplicación.
+Las nuevas categorías deben ser utilizables al crear o editar una tarea.
