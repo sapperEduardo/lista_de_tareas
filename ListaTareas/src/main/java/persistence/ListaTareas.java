@@ -28,6 +28,10 @@ public class ListaTareas {
         }
     }
 
+    public void agregarTarea(Tarea t){
+        this.listaTareas.add(t);
+    }
+
     public int cantidadTareas(){
         int cantidad = 0;
         try {
@@ -55,6 +59,9 @@ public class ListaTareas {
         return datos;
     }
 
+    public void eliminarTarea(Tarea t){
+        this.listaTareas.remove(t);
+    }
 
     public LinkedList<String> getNombresTareas(){
         LinkedList<String> datos = new LinkedList<>();

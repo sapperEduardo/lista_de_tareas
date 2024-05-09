@@ -27,6 +27,20 @@ public class Tarea {
         this.fechaInicio = fechaInicio;
         this.fechaVence = fechaVence;
     }
+    public Tarea(String nombre, String descripcion, int idCategoria){
+        Coneccion.ejecutarModificacion("insert into Tareas (nombre, descripcion, idCategoria) " +
+                "values('"+nombre+"','"+descripcion+"',"+idCategoria+")");
+        try {
+            ResultSet r = Coneccion.ejecutarConsulta("select * from Tareas where nombre = '"+nombre+"'");
+            if (r.next()){
+                this.idTarea = r.getInt(1);
+            }
+        }catch (Exception e){
+            System.out.println("Error al cargar nueva taria: "+e.getMessage());
+        }
+        obtenerDatos();
+    }
+
 
     public void obtenerDatos(){
         try {
@@ -49,6 +63,22 @@ public class Tarea {
             }
         }catch (Exception e){
             System.out.println("Error al obtener datos de la tarea numero: "+e.getMessage());
+        }
+    }
+
+    public void terminarTarea(){
+        try {
+            Coneccion.ejecutarModificacion("update Tareas set completada = 1 where idTarea = "+this.idTarea);
+        }catch (Exception e){
+            System.out.println("Error al terminar tarea: "+e.getMessage());
+        }
+        obtenerDatos();
+    }
+    public void eliminarTarea(){
+        try{
+            Coneccion.ejecutarModificacion("delete Tareas where idTarea = "+this.idTarea);
+        }catch (Exception e){
+            System.out.println("Error al eliminar taria: "+e.getMessage());
         }
     }
 

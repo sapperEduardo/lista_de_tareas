@@ -43,7 +43,7 @@ public class main {
                     break;
 
                 case 2:
-                    int idCategoria = seleccionarCategoria(categorias.getListaCategorias(), v, categorias);
+                    int idCategoria = seleccionarCategoria(v, categorias);
                     if (idCategoria == 0) {break;}
                     datosTareas = listaTareas.filtrarTareas(idCategoria);
                     v.mostrarTareas(datosTareas);
@@ -91,12 +91,13 @@ public class main {
                         }
 
                         if (opcion == 1) {
-                            int cat = seleccionarCategoria(listaCategorias, v, categorias);
+                            int cat = seleccionarCategoria(v, categorias);
                             if (cat == 0) {break;}
                             tarea.cambiarCategoria(cat);
                             System.out.println("Cambios efectuados!");
                             break;
                         } else if (opcion == 2) {
+                            v.limpiarBuffer();
                             String nombre_cat = ingresarCampo("NOMBRE-DE-CATEGORIA", v);
 
                             int id_nueva_cat = categorias.agregarCategoria(nombre_cat);
@@ -108,28 +109,72 @@ public class main {
                     }
 
                 case 4:
-                    crearTarea(v);
+                    String[] datos_tarea = crearTarea(v, categorias);
+                    String nombre = datos_tarea[0];
+                    String descripcion = datos_tarea[1];
+                    int idCat = Integer.parseInt( datos_tarea[2]);
+                    Tarea t = new Tarea(nombre, descripcion, idCat);
+                    listaTareas.agregarTarea(t);
+                    System.out.println("Tarea agregada!");
+                    break;
 
+                case 5:
+                    int idT = v.seleccionearTarea(listaTareas.getNombresTareas());
+                    while (idT == 404 || !listaTareas.existeTarea(idT)) {
+                        if (idT != 404) {
+                            System.out.println("-La tarea no existe!");
+                        }
+                        idT = v.seleccionearTarea(listaTareas.getNombresTareas());
+                    }
+                    listaTareas.getTarea(idT).terminarTarea();
+                    System.out.println("Tarea completada!");
+                    break;
 
-
+                case 6:
+                    int id = v.seleccionearTarea(listaTareas.getNombresTareas());
+                    while (id == 404 || !listaTareas.existeTarea(id)) {
+                        if (id != 404) {
+                            System.out.println("-La tarea no existe!");
+                        }
+                        id = v.seleccionearTarea(listaTareas.getNombresTareas());
+                    }
+                    Tarea T = listaTareas.getTarea(id);
+                    T.eliminarTarea();
+                    listaTareas.eliminarTarea(T);
+                    System.out.println("Tarea eliminada!");
+                    break;
             }
-
 
             respuesta = v.mostrarMenu();
 
         }
 
 
-
-
     }
 
 
 
-    private static String[] crearTarea(Vista v){
+    private static String[] crearTarea(Vista v, Categorias categorias){
         String[] salida = new String[3];
-        String nombre = ingresarCampo("NOMBRE", v);
-        String descripcion = ingresarCampo("DESCRIPCION", v);
+        int idCat;
+        String nombre, descripcion;
+        nombre = ingresarCampo("NOMBRE", v);
+        descripcion = ingresarCampo("DESCRIPCION", v);
+        int respuesta = v.crearCategoria(categorias.getListaCategorias());
+        while (respuesta == 404){
+            respuesta = v.crearCategoria(categorias.getListaCategorias());
+        }
+
+        if (respuesta == 1){
+            idCat = seleccionarCategoria(v, categorias);
+        }else{
+            v.limpiarBuffer();
+            String nombre_cat = ingresarCampo("NOMBRE-DE-CATEGORIA", v);
+            idCat = categorias.agregarCategoria(nombre_cat);
+        }
+        salida[0] = nombre;
+        salida[1] = descripcion;
+        salida[2] = ""+idCat;
 
         return salida;
 
@@ -137,7 +182,7 @@ public class main {
 
 
     private static String ingresarCampo(String nombre, Vista v){
-        String nombre_cat = v.ingresarCampo(nombre, true);
+        String nombre_cat = v.ingresarCampo(nombre, false);
         while (nombre_cat.equals("")) {
             System.out.println("Escribe algo!");
             nombre_cat = v.ingresarCampo(nombre, false);
@@ -146,11 +191,8 @@ public class main {
     }
 
 
-
-
-
-
-    private static int seleccionarCategoria(LinkedList<String> listaCat, Vista v, Categorias categorias){
+    private static int seleccionarCategoria(Vista v, Categorias categorias){
+        LinkedList<String> listaCat = categorias.getListaCategorias();
         int idCat = v.seleccionarCategoria(listaCat);
         while (idCat == 404){
             idCat = v.seleccionarCategoria(listaCat);

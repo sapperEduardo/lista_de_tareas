@@ -13,6 +13,7 @@ public class Vista {
     public Vista(){}
 
     public int mostrarMenu(){
+        espacios(2);
         System.out.println("-----MENU----PRINCIPAL-----");
         System.out.println("-ver tareas (1)");
         System.out.println("-ver tareas por segmento (2)");
@@ -37,6 +38,7 @@ public class Vista {
 
 
     public int crearCategoria(LinkedList<String> lista){
+        espacios(2);
         System.out.println("---¿EXISTE--LA--CATEGORIA?---");
         System.out.println("-LISTA:-----");
         for (String datos: lista) {
@@ -60,6 +62,7 @@ public class Vista {
 
     }
     public int seleccionarCategoria(LinkedList<String> lista){
+        espacios(2);
         System.out.println("--SELECCIONE-UNA-CATEGORIA--");
         for (String datos: lista) {
             System.out.println(datos);
@@ -79,6 +82,7 @@ public class Vista {
 
 
     public int seleccionearTarea(LinkedList<String> datos){
+        espacios(2);
         System.out.println("----ELEGIR--TAREA----");
         for (String datoTarea: datos) {
             System.out.println(datoTarea);
@@ -96,6 +100,7 @@ public class Vista {
     }
 
     public int seleccionarCampo(){
+        espacios(2);
         System.out.println("--¿QUE--QUERES--CAMBIAR?--");
         System.out.println("-Nombre (1)");
         System.out.println("-Descripcion (2)");
@@ -118,6 +123,7 @@ public class Vista {
 
     public String ingresarCampo(String campo, boolean primera){
         if (primera){in.nextLine();}
+        espacios(1);
         System.out.println("---INGRESAR--"+campo+"---");
         System.out.print("---> ");
         String opcion = in.nextLine();
@@ -126,9 +132,12 @@ public class Vista {
 
 
     public void mostrarTareas(LinkedList<String> datosTareas){
+        espacios(1);
         System.out.println("----TAREAS----");
+        espacios(1);
         for (String datoTarea: datosTareas) {
             System.out.println(datoTarea);
+            espacios(2);
         }
     }
 
@@ -137,6 +146,11 @@ public class Vista {
         in.nextLine();
     }
 
+    public void espacios(int lineas){
+        for (int i = 0; i < lineas; i++){
+            System.out.println("");
+        }
+    }
 
 
 
